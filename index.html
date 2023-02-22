@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generar PDF desde campo de texto con JavaScript</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <form>
+    <label for="texto">Introduce el nombre para personalizar la carta compromiso:</label>
+    <br>
+    <textarea id="texto" name="texto"></textarea>
+    <br><br>
+    <button type="button" onclick="generarPDF()">Descargar PDF</button>
+  </form>
+
+  <script>
+    function generarPDF() {
+      // Obtener el nombre para utilizarlo en plantilla
+      const texto = document.getElementById('texto').value;
+
+      // Crear una nueva ventana emergente para imprimir el contenido de la página
+      const ventana = window.open('', '', 'height=500,width=800');
+
+      // Agregar el contenido del campo de texto a la ventana emergente
+      ventana.document.write(texto);
+
+      // Imprimir la ventana emergente
+      ventana.print();
+
+      // Cerrar la ventana emergente
+      ventana.close();
+    }
+  </script>
+</body>
+</html>
+
