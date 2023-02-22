@@ -1,74 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Generar carta en PDF con JavaScript</title>
-  <meta charset="UTF-8">
-</head>
-<body>
-  <form>
-    <label for="texto">Introduce el texto para incluir en la carta:</label>
-    <br>
-    <input id="texto" name="texto"></input>
-    <br><br>
-    <button type="button" onclick="generarPDF()">Descargar carta en PDF</button>
-  </form>
+  <head>
+    <meta charset="UTF-8">
+    <title>PDF CREATOR</title>
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+  <body>
 
-  <script>
-    function generarPDF() {
-      // Obtener el contenido del campo de texto
-      const texto = document.getElementById('texto').value;
+    <section>
+        <h1>Generador de Carta Compromiso para envio de Acuerdos de Pago</h1>
+        
+        <form>
+        <label for="name">Ingresa el nombre para generar el archivo:</label>
+        <input type="text" id="name" name="name" placeholder="Nombre completo del titular"><br>
+        <button type="button" onclick="generarPdf()">Generar PDF</button>
+        </form>
 
-      // Crear una nueva ventana emergente para imprimir el contenido de la página
-      const ventana = window.open('', '', 'height=500,width=800');
+    </section>
+    
 
-      // Agregar la imagen y la carta a la ventana emergente
-      const imagen = '<img src="data:image/png;base64,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" alt="Logo de la empresa" style="max-width: 100%;">';
-      const carta = `<p>${imagen}</p>
-                    <br> 
-                    <p>Buen día,  ${texto}.
-                    <br>
-                    <p>Por medio de la presente la agencia de soluciones GRUPO GABSSA, nos comprometemos a enviarle a usted ${name} el acuerdo de pago en las próximas horas. Esto con la finalidad de que pueda completar su pago conforme a la promesa generada con nuestra agencia de soluciones.<p> 
-                    <br>
-                    <p>Sin más por el momento, agradecemos su amable tiempo para la generación de su Acuerdo de Pago.
-                    <br>
-                    <p>De antemano agradecemos sus atenciones BBVA.</p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <p>Agencia de soluciones Grupo GABSSA.</p>`;
-      ventana.document.write(carta);
-
-      // Imprimir la ventana emergente
-      ventana.print();
-
-      // Cerrar la ventana emergente
-      ventana.close();
-    }
-  </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
+
 
 
 
