@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <title>PDF CREATOR</title>
     <link rel="stylesheet" href="estilos.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
   </head>
   <body>
 
-    <section>
-        <h1>Generador de Carta Compromiso para envio de Acuerdos de Pago</h1>
+
+    <div class="espacio"></div>
+
+    <section class="PDFGen">
+        <h1>Carta Compromiso para envio de Acuerdos de Pago</h1>
         
         <form>
         <label for="name">Ingresa el nombre para generar el archivo:</label>
@@ -16,12 +20,26 @@
         <button type="button" onclick="generarPdf()">Generar PDF</button>
         </form>
 
+        <form>
+            <label>Previsualización</label>
+            <button type="button" onclick="verCarta()">Ver</button>
+        </form>      
+        
+        <div id="here"></div>
+
     </section>
-    
+
+    <div class="espacio">
+        <footer>
+            <p>Derechos Reservados - Rubén Herrera - 2023 GRUPO GABSSA.</p>
+        </footer>
+    </div>
+
 
     <script src="script.js"></script>
   </body>
 </html>
+
 
 
 
